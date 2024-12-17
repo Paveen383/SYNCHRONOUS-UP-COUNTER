@@ -14,10 +14,9 @@ Quartus prime
 
 If we enable each J-K flip-flop to toggle based on whether or not all preceding flip-flop outputs (Q) are “high,” we can obtain the same counting sequence as the asynchronous circuit without the ripple effect, since each flip-flop in this circuit will be clocked at exactly the same time:
 
-![image](https://github.com/naavaneetha/SYNCHRONOUS-UP-COUNTER/assets/154305477/d5db3fa0-e413-404c-b80e-b2f39d82e7e8)
+![image](https://github.com/user-attachments/assets/6af6f1ac-4c0d-4f9f-8823-64c8c8b3e32a)
 
-
-![image](https://github.com/naavaneetha/SYNCHRONOUS-UP-COUNTER/assets/154305477/52cb61eb-d04b-442d-810c-31185a68410b)
+![image](https://github.com/user-attachments/assets/b4b68581-fc11-458e-a4b1-15b3c6992c9e)
 
 Each flip-flop in this circuit will be clocked at exactly the same time.
 The result is a four-bit synchronous “up” counter. Each of the higher-order flip-flops are made ready to toggle (both J and K inputs “high”) if the Q outputs of all previous flip-flops are “high.”
@@ -28,19 +27,47 @@ However, the remaining flip-flops should be made ready to toggle only when all l
 
 **Procedure**
 
-/* write all the steps invloved */
+1.Initialize the shift register to a known state (e.g., all zeros).
+
+2.Input a bit serially into the shift register.
+
+3.Shift the contents of the register one position to the right (or left).
+
+4.Output the shifted bit from the last stage of the register.
+
+5.Repeat steps 2-4 for each bit you want to input and shift.
 
 **PROGRAM**
 
 /* Program for flipflops and verify its truth table in quartus using Verilog programming. 
-
-Developed by: RegisterNumber:
-*/
+Developed by:Paveen Kumaran SV
+RegisterNumber:24000025
+```
+module exp11(out,clk,rstn);
+input clk,rstn;
+output reg [3:0]out;
+always @ (posedge clk)
+begin
+   if(!rstn)
+     out<=0;
+   else 
+     out <= out+1;
+end
+endmodule
+```
 
 **RTL LOGIC UP COUNTER**
 
+![image](https://github.com/user-attachments/assets/734af86c-0975-4336-a04c-4f653c79469e)
+
 **TIMING DIAGRAM FOR IP COUNTER**
+
+![image](https://github.com/user-attachments/assets/45409920-c468-4dd2-a621-f0a95759a29c)
 
 **TRUTH TABLE**
 
+![image](https://github.com/user-attachments/assets/6b51b6f3-a72a-4cda-90e1-3294e6d0795b)
+
 **RESULTS**
+
+Hence a 4 bit synchronous up counter is implemented correctly and program code is successfully executed.
